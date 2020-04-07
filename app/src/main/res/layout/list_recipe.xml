@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true">
+
+
+    <RelativeLayout
+        android:background="#00BCD4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_avatar"
+            android:layout_marginTop="20dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="4dp"
+            android:src="@drawable/ic_launcher_background"
+            android:layout_margin="20dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="40dp"
+            android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_name_resep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_toRightOf="@+id/img_avatar"
+        android:layout_weight="1"
+        android:textColor="#FFff"
+        android:paddingLeft="10dp"
+        android:text="Nama resep"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/tv_name_resep"
+        android:layout_weight="1"
+        android:paddingLeft="10dp"
+        android:textSize="15dp"
+        android:layout_toRightOf="@+id/img_avatar"
+        android:layout_width="match_parent"
+        android:textColor="#FFff"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_desc"
+        android:text="desc"
+        android:layout_gravity="center"
+        tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/tv_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_toRightOf="@+id/img_avatar"
+                android:layout_weight="1"
+                android:paddingLeft="10dp"
+                android:text="id"
+                android:textSize="0dp"
+                android:visibility="invisible" />
+
+    <TextView
+        android:visibility="invisible"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/tv_desc"
+        android:layout_weight="1"
+        android:paddingLeft="10dp"
+        android:textSize="10dp"
+        android:layout_toRightOf="@+id/img_avatar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_bahan"
+        android:text="bahan"
+        android:layout_gravity="center"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:visibility="invisible"
+
+        android:layout_below="@+id/tv_bahan"
+        android:layout_weight="1"
+        android:paddingLeft="10dp"
+        android:textSize="10dp"
+        android:layout_toRightOf="@+id/img_avatar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_step"
+        android:text="step"
+        android:layout_gravity="center"
+        tools:ignore="MissingConstraints" />
+
+        </LinearLayout>
+
+</RelativeLayout>
+
+
+
+</androidx.cardview.widget.CardView>
