@@ -118,36 +118,43 @@ public class RecipeActivity extends AppCompatActivity implements CustomAdapter.O
     }
 
     public void DataPage2(){
-
         ApiInterface service = ServiceGenerator.createService(ApiInterface.class);
         Call<Envelope<List<DataRecipe>>> call = service.doLoadMore(page++)  ;
         call.enqueue(new Callback<Envelope<List<DataRecipe>>>() {
             @Override
             public void onResponse(Call<Envelope<List<DataRecipe>>> call, Response<Envelope<List<DataRecipe>>> response) {
-                if(response.body()!=null){
-                    loadmore.setActivated(false);
-                    progressDoalog.dismiss();
-                    for (int i = 0; i < response.body().getData().size(); i++) {
-                        int id = response.body().getData().get(i).getId();
-                        String namaResep = response.body().getData().get(i).getNamaResep();
-                        String deskripsi = response.body().getData().get(i).getDeskripsi();
-                        String bahan = response.body().getData().get(i).getBahan();
-                        String langkahPembuatan = response.body().getData().get(i).getLangkahPembuatan();
-                        String foto = response.body().getData().get(i).getFoto();
-                        recipe.add(new DataRecipe(id, namaResep, deskripsi, bahan, langkahPembuatan, foto));
-                        adapter.notifyDataSetChanged();
-                    }
+                if(response.isSuccessful()){
+                    if(response.body().getData().size()!=0){
+                        loadmore.setEnabled(false);
+                        progressDoalog.dismiss();
+                        for (int i = 0; i < response.body().getData().size(); i++) {
+                            int id = response.body().getData().get(i).getId();
+                            String namaResep = response.body().getData().get(i).getNamaResep();
+                            String deskripsi = response.body().getData().get(i).getDeskripsi();
+                            String bahan = response.body().getData().get(i).getBahan();
+                            String langkahPembuatan = response.body().getData().get(i).getLangkahPembuatan();
+                            String foto = response.body().getData().get(i).getFoto();
+                            recipe.add(new DataRecipe(id, namaResep, deskripsi, bahan, langkahPembuatan, foto));
+                            adapter.notifyDataSetChanged();
+                        }
 
-                    String message = "berhasil load data page " + response.body().getMeta().current_page;
-                    Snackbar snackbar = Snackbar.make(mRecipeLayout, message, Snackbar.LENGTH_SHORT);
-                    snackbar.show();
-                    loadmore.setActivated(true);
+                        String message = "berhasil load data page " + response.body().getMeta().current_page;
+                        Snackbar snackbar = Snackbar.make(mRecipeLayout, message, Snackbar.LENGTH_SHORT);
+                        snackbar.show();
+                        loadmore.setEnabled(true);
+                    }else{
+                        progressDoalog.dismiss();
+                        Snackbar snackbar = Snackbar.make(mRecipeLayout, "Isi Page kosong", Snackbar.LENGTH_SHORT);
+                        snackbar.show();
+
+                    }
                 }else if(response.errorBody()!=null) {
                     progressDoalog.dismiss();
                     Snackbar snackbar = Snackbar.make(mRecipeLayout, "load data gagal pada page " +page, Snackbar.LENGTH_SHORT);
                     snackbar.show();
 
                 }
+
             }
 
             @Override
