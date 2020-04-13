@@ -23,13 +23,6 @@ public class ErorResponse{
 
 	public Error getError(){
 		return error;
-//		if(error.getEmail()!=null){
-//			return String.valueOf(error.getEmail().get(0));
-//		}else if(error.getName()!=null){
-//			return String.valueOf(error.getName().get(0));
-//		}else {
-//			return String.valueOf(error.getPassword().get(0));
-//		}
 	}
 
 	@Override

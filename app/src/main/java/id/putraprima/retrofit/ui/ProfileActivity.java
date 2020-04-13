@@ -79,4 +79,9 @@ public class ProfileActivity extends AppCompatActivity {
         Intent i = new Intent(ProfileActivity.this, RecipeActivity.class);
         startActivity(i);
     }
+
+    public void handleUpload(View view) {
+        Intent intent = new Intent(this, UploadActivity.class);
+        startActivity(intent);
+    }
 }

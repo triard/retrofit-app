@@ -7,26 +7,23 @@
     android:id="@+id/recipeLayout"
     tools:context=".RecipeActivity">
 
-    <TextView
-        android:id="@+id/textView6"
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="List Recipe"
-        android:textAlignment="center"
-        android:textSize="36sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        android:id="@+id/swipeRefresh">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/customRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
          />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <LinearLayout
         android:id="@+id/button3"
@@ -64,5 +61,6 @@
             android:onClick="HandleLoadMore"
             />
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

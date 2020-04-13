@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -60,6 +61,34 @@ public class RecipeActivity extends AppCompatActivity implements CustomAdapter.O
         doLoad();
 
         loadmore = findViewById(R.id.loadmore);
+
+        /*menambah warna pada SwipeRefreshLayout*/
+        final SwipeRefreshLayout dorefresh = (SwipeRefreshLayout)findViewById(R.id.swipeRefresh);
+        dorefresh.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
+        /*event ketika widget dijalankan*/
+        dorefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener(){
+            @Override
+            public void onRefresh() {
+                refreshItem();
+            }
+
+            void refreshItem() {
+                page=2;
+                recipe.clear();
+                doLoad();
+                onItemLoad();
+            }
+
+            void onItemLoad() {
+                dorefresh.setRefreshing(false);
+            }
+
+        });
+
     }
 
 

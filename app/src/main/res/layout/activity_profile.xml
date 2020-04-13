@@ -61,5 +61,14 @@
             android:onClick="handleRecipe"
             android:text="Recipe list"
             android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_upload_recipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="handleUpload"
+            android:text="Upload Recipe"
+            android:textAllCaps="false"
+            />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
